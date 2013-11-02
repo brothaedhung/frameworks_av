@@ -30,6 +30,6 @@ else
 LOCAL_SHARED_LIBRARIES += libdl
 endif
 
-LOCAL_CFLAGS += -fvisibility=hidden
+LOCAL_CFLAGS += -fvisibility=hidden -fno-strict-aliasing
 
 include $(BUILD_SHARED_LIBRARY)

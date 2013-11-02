@@ -94,6 +94,7 @@ LOCAL_LDLIBS := \
 
 LOCAL_CFLAGS += -Wno-multichar \
     -DM4xVSS_RESERVED_MOOV_DISK_SPACEno \
-    -DDECODE_GIF_ON_SAVING
+    -DDECODE_GIF_ON_SAVING \
+    -fno-strict-aliasing
 
 include $(BUILD_SHARED_LIBRARY)

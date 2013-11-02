@@ -51,7 +51,7 @@ LOCAL_SHARED_LIBRARIES += libdl
 LOCAL_LDLIBS := \
     -lpthread -ldl
 
-LOCAL_CFLAGS += -Wno-multichar
+LOCAL_CFLAGS += -Wno-multichar -fno-strict-aliasing
 
 include $(BUILD_SHARED_LIBRARY)
 

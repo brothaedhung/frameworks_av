@@ -79,7 +79,7 @@ LOCAL_SRC_FILES+= \
 endif
 
 ifeq ($(BOARD_USE_SAMSUNG_SEPARATEDSTREAM),true)
-LOCAL_CFLAGS += -DUSE_SAMSUNG_SEPARATEDSTREAM
+LOCAL_CFLAGS += -DUSE_SAMSUNG_SEPARATEDSTREAM -fno-strict-aliasing
 endif
 
 ifeq ($(BOARD_USES_QCOM_HARDWARE),true)
@@ -89,19 +89,19 @@ LOCAL_SRC_FILES += \
 
 ifneq ($(filter caf bfam,$(TARGET_QCOM_AUDIO_VARIANT)),)
 ifeq ($(BOARD_USES_ALSA_AUDIO),true)
-    LOCAL_CFLAGS += -DQCOM_VOIP_ENABLED
+    LOCAL_CFLAGS += -DQCOM_VOIP_ENABLED -fno-strict-aliasing
 else
 ifeq ($(BOARD_QCOM_VOIP_ENABLED),true)
-    LOCAL_CFLAGS += -DQCOM_VOIP_ENABLED
+    LOCAL_CFLAGS += -DQCOM_VOIP_ENABLED -fno-strict-aliasing
 endif
 endif
 endif
 endif
 
 # for <cutils/atomic-inline.h>
-LOCAL_CFLAGS += -DANDROID_SMP=$(if $(findstring true,$(TARGET_CPU_SMP)),1,0)
+LOCAL_CFLAGS += -DANDROID_SMP=$(if $(findstring true,$(TARGET_CPU_SMP)),1,0) -fno-strict-aliasing
 LOCAL_SRC_FILES += SingleStateQueue.cpp
-LOCAL_CFLAGS += -DSINGLE_STATE_QUEUE_INSTANTIATIONS='"SingleStateQueueInstantiations.cpp"'
+LOCAL_CFLAGS += -DSINGLE_STATE_QUEUE_INSTANTIATIONS='"SingleStateQueueInstantiations.cpp"' -fno-strict-aliasing
 
 LOCAL_SHARED_LIBRARIES := \
 	libui liblog libcutils libutils libbinder libsonivox libicuuc libexpat \

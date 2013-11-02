@@ -3,3 +3,5 @@
 
 #include $(call all-makefiles-under,$(LOCAL_PATH))
 include $(call all-subdir-makefiles)
+
+LOCAL_CFLAGS += -fno-strict-aliasing

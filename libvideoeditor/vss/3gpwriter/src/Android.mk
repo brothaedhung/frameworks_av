@@ -48,7 +48,8 @@ LOCAL_LDLIBS := \
     -lpthread -ldl
 
 LOCAL_CFLAGS += -Wno-multichar \
-    -DDUPLICATE_STTS_IN_LAST_AU
+    -DDUPLICATE_STTS_IN_LAST_AU \
+    -fno-strict-aliasing
 
 include $(BUILD_STATIC_LIBRARY)
 

@@ -53,7 +53,7 @@ LOCAL_SRC_FILES:=               \
 LOCAL_SRC_FILES += StateQueue.cpp
 
 # uncomment for debugging timing problems related to StateQueue::push()
-LOCAL_CFLAGS += -DSTATE_QUEUE_DUMP
+LOCAL_CFLAGS += -DSTATE_QUEUE_DUMP -fno-strict-aliasing
 
 LOCAL_C_INCLUDES := \
     $(call include-path-for, audio-effects) \
@@ -77,7 +77,7 @@ LOCAL_SHARED_LIBRARIES := \
 # SRS Processing
 ifeq ($(strip $(BOARD_USES_SRS_TRUEMEDIA)),true)
 LOCAL_SHARED_LIBRARIES += libsrsprocessing
-LOCAL_CFLAGS += -DSRS_PROCESSING
+LOCAL_CFLAGS += -DSRS_PROCESSING -fon-strict-aliasing
 LOCAL_C_INCLUDES += $(TARGET_OUT_HEADERS)/mm-audio/audio-effects
 endif
 # SRS Processing
@@ -91,14 +91,14 @@ LOCAL_MODULE:= libaudioflinger
 
 LOCAL_SRC_FILES += FastMixer.cpp FastMixerState.cpp
 
-LOCAL_CFLAGS += -DFAST_MIXER_STATISTICS
+LOCAL_CFLAGS += -DFAST_MIXER_STATISTICS -fno-strict-aliasing
 
 # uncomment to display CPU load adjusted for CPU frequency
 # LOCAL_CFLAGS += -DCPU_FREQUENCY_STATISTICS
 
 LOCAL_CFLAGS += -DSTATE_QUEUE_INSTANTIATIONS='"StateQueueInstantiations.cpp"'
 
-LOCAL_CFLAGS += -UFAST_TRACKS_AT_NON_NATIVE_SAMPLE_RATE
+LOCAL_CFLAGS += -UFAST_TRACKS_AT_NON_NATIVE_SAMPLE_RATE -fno-strict-aliasing
 
 # uncomment to allow tee sink debugging to be enabled by property
 # LOCAL_CFLAGS += -DTEE_SINK
@@ -109,9 +109,9 @@ LOCAL_CFLAGS += -UFAST_TRACKS_AT_NON_NATIVE_SAMPLE_RATE
 
 # Define ANDROID_SMP appropriately. Used to get inline tracing fast-path.
 ifeq ($(TARGET_CPU_SMP),true)
-    LOCAL_CFLAGS += -DANDROID_SMP=1
+    LOCAL_CFLAGS += -DANDROID_SMP=1 -fno-strict-aliasing
 else
-    LOCAL_CFLAGS += -DANDROID_SMP=0
+    LOCAL_CFLAGS += -DANDROID_SMP=0 -fno-strict-aliasing
 endif
 
 ifdef DOLBY_DAP
@@ -140,6 +140,8 @@ LOCAL_SHARED_LIBRARIES := \
 LOCAL_MODULE:= test-resample
 
 LOCAL_MODULE_TAGS := optional
+
+LOCAL_CFLAGS += -fno-strict-aliasing
 
 include $(BUILD_EXECUTABLE)
 

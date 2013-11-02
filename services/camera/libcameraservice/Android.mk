@@ -52,7 +52,15 @@ LOCAL_C_INCLUDES += \
     external/jpeg
 
 
-LOCAL_CFLAGS += -Wall -Wextra
+LOCAL_CFLAGS += -Wall -Wextra -fno-strict-aliasing
+
+ifeq ($(BOARD_USES_QCOM_LEGACY_CAM_PARAMS),true)
+    LOCAL_CFLAGS += -DQCOM_LEGACY_CAM_PARAMS -fno-strict-aliasing
+endif
+
+ifeq ($(BOARD_HAVE_HTC_FFC),true)
+    LOCAL_CFLAGS += -DBOARD_HAVE_HTC_FFC -fno-strict-aliasing
+endif
 
 ifeq ($(BOARD_USES_QCOM_LEGACY_CAM_PARAMS),true)
     LOCAL_CFLAGS += -DQCOM_LEGACY_CAM_PARAMS

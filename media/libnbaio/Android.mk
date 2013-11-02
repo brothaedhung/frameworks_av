@@ -33,4 +33,6 @@ LOCAL_SHARED_LIBRARIES := \
     libutils \
     liblog
 
+LOCAL_CFLAGS += -fno-strict-aliasing
+
 include $(BUILD_SHARED_LIBRARY)

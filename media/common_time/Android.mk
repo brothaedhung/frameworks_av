@@ -7,6 +7,8 @@ LOCAL_PATH:= $(call my-dir)
 
 include $(CLEAR_VARS)
 
+LOCAL_CFLAGS += -fno-strict-aliasing
+
 LOCAL_MODULE := libcommon_time_client
 LOCAL_MODULE_TAGS := optional
 LOCAL_SRC_FILES := cc_helper.cpp \

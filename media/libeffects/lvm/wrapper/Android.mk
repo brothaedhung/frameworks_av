@@ -9,7 +9,7 @@ LOCAL_ARM_MODE := arm
 LOCAL_SRC_FILES:= \
 	Bundle/EffectBundle.cpp
 
-LOCAL_CFLAGS += -fvisibility=hidden
+LOCAL_CFLAGS += -fvisibility=hidden -fno-strict-aliasing
 
 LOCAL_MODULE:= libbundlewrapper
 
@@ -38,7 +38,7 @@ LOCAL_ARM_MODE := arm
 LOCAL_SRC_FILES:= \
     Reverb/EffectReverb.cpp
 
-LOCAL_CFLAGS += -fvisibility=hidden
+LOCAL_CFLAGS += -fvisibility=hidden -fno-strict-aliasing
 
 LOCAL_MODULE:= libreverbwrapper
 

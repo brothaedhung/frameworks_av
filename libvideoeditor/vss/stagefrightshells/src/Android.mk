@@ -55,7 +55,7 @@ LOCAL_SHARED_LIBRARIES :=     \
     libvideoeditor_osal       \
     libvideoeditorplayer      \
 
-LOCAL_CFLAGS += \
+LOCAL_CFLAGS += -fno-strict-aliasing \
 
 LOCAL_STATIC_LIBRARIES := \
     libstagefright_color_conversion

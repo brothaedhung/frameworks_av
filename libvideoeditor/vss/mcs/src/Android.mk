@@ -52,7 +52,8 @@ LOCAL_LDLIBS := \
     -lpthread -ldl
 
 LOCAL_CFLAGS += -Wno-multichar \
-    -DM4MCS_WITH_FAST_OPEN
+    -DM4MCS_WITH_FAST_OPEN \
+    -fno-strict-aliasing
 
 include $(BUILD_STATIC_LIBRARY)
 

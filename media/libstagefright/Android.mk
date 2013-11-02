@@ -116,7 +116,7 @@ ifneq ($(filter caf bfam,$(TARGET_QCOM_AUDIO_VARIANT)),)
         LOCAL_SRC_FILES += LPAPlayerALSA.cpp
         ifeq ($(call is-chipset-in-board-platform,msm8960),true)
             LOCAL_SRC_FILES += TunnelPlayer.cpp
-            LOCAL_CFLAGS += -DUSE_TUNNEL_MODE
+            LOCAL_CFLAGS += -DUSE_TUNNEL_MODE -fno-strict-aliasing
             LOCAL_CFLAGS += -DTUNNEL_MODE_SUPPORTS_AMRWB
         endif
         ifeq ($(call is-chipset-in-board-platform,msm8974),true)
@@ -124,13 +124,13 @@ ifneq ($(filter caf bfam,$(TARGET_QCOM_AUDIO_VARIANT)),)
             LOCAL_CFLAGS += -DUSE_TUNNEL_MODE
         endif
         ifeq ($(NO_TUNNEL_MODE_FOR_MULTICHANNEL),true)
-            LOCAL_CFLAGS += -DNO_TUNNEL_MODE_FOR_MULTICHANNEL
+            LOCAL_CFLAGS += -DNO_TUNNEL_MODE_FOR_MULTICHANNEL -fno-strict-aliasing
         endif
     else
         LOCAL_SRC_FILES += LPAPlayer.cpp
-        LOCAL_CFLAGS += -DLEGACY_LPA
+        LOCAL_CFLAGS += -DLEGACY_LPA -fno-strict-aliasing
     endif
-    LOCAL_CFLAGS += -DQCOM_ENHANCED_AUDIO -DUSE_LPA_MODE
+    LOCAL_CFLAGS += -DQCOM_ENHANCED_AUDIO -DUSE_LPA_MODE -fno-strict-aliasing
 endif
 
 ifneq ($(TARGET_QCOM_MEDIA_VARIANT),)
@@ -191,10 +191,10 @@ LOCAL_SHARED_LIBRARIES += \
         libstagefright_foundation \
         libdl
 
-LOCAL_CFLAGS += -Wno-multichar
+LOCAL_CFLAGS += -Wno-multichar -fno-strict-aliasing
 
 ifeq ($(BOARD_USE_SAMSUNG_COLORFORMAT), true)
-LOCAL_CFLAGS += -DUSE_SAMSUNG_COLORFORMAT
+LOCAL_CFLAGS += -DUSE_SAMSUNG_COLORFORMAT -fno-strict-aliasing
 
 # Include native color format header path
 LOCAL_C_INCLUDES += \
@@ -204,7 +204,7 @@ LOCAL_C_INCLUDES += \
 endif
 
 ifeq ($(BOARD_USE_TI_DUCATI_H264_PROFILE), true)
-LOCAL_CFLAGS += -DUSE_TI_DUCATI_H264_PROFILE
+LOCAL_CFLAGS += -DUSE_TI_DUCATI_H264_PROFILE -fno-strict-aliasing
 endif
 
 ifdef DOLBY_UDC
@@ -220,7 +220,7 @@ LOCAL_MODULE_TAGS := optional
 
 
 ifeq ($(TARGET_ENABLE_QC_AV_ENHANCEMENTS),true)
-    LOCAL_CFLAGS += -DENABLE_QC_AV_ENHANCEMENTS
+    LOCAL_CFLAGS += -DENABLE_QC_AV_ENHANCEMENTS -fno-strict-aliasing
     LOCAL_SRC_FILES  += ExtendedWriter.cpp
     LOCAL_SRC_FILES  += QCMediaDefs.cpp
     ifneq ($(TARGET_QCOM_MEDIA_VARIANT),)

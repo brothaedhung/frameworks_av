@@ -17,4 +17,6 @@ LOCAL_SHARED_LIBRARIES += libdl
 LOCAL_C_INCLUDES := \
     $(call include-path-for, audio-effects)
 
+LOCAL_CFLAGS += -fno-strict-aliasing
+
 include $(BUILD_SHARED_LIBRARY)

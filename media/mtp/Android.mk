@@ -37,7 +37,7 @@ LOCAL_SRC_FILES:=                                       \
 
 LOCAL_MODULE:= libmtp
 
-LOCAL_CFLAGS := -DMTP_DEVICE -DMTP_HOST
+LOCAL_CFLAGS := -DMTP_DEVICE -DMTP_HOST -fno-strict-aliasing
 
 # Needed for <bionic_time.h>
 LOCAL_C_INCLUDES := bionic/libc/private
