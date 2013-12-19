@@ -36,21 +36,21 @@ struct Size {
         height = h;
     }
 };
-#ifdef QCOM_HARDWARE
-struct FPSRange{
-    int minFPS;
-    int maxFPS;
-
-    FPSRange(){
-        minFPS=0;
-        maxFPS=0;
-    };
-    FPSRange(int min,int max){
-        minFPS=min;
-        maxFPS=max;
-   };
-};
-#endif
+//#ifdef QCOM_HARDWARE
+//struct FPSRange{
+//    int minFPS;
+//    int maxFPS;
+//
+//    FPSRange(){
+//        minFPS=0;
+//        maxFPS=0;
+//    };
+//    FPSRange(int min,int max){
+//        minFPS=min;
+//        maxFPS=max;
+//   };
+//};
+//#endif
 class CameraParameters
 {
 public:
